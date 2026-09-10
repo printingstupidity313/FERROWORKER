@@ -12,118 +12,217 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{
+  :root {
     --paper:#f3efe6;
     --ink:#1c1a17;
     --ink-soft:#5c574d;
     --rule:#d8d1c1;
     --rust:#b5451b;
   }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; padding:0;
+
+  * { box-sizing:border-box; }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    margin:0;
+    padding:0;
     background:var(--paper);
     color:var(--ink);
     font-family:'IBM Plex Mono', monospace;
     font-size:16px;
     line-height:1.65;
   }
-  ::selection{background:var(--rust); color:var(--paper);}
-  a{color:var(--rust);}
-  a:hover{text-decoration:none;}
 
-  .wrap{max-width:680px; margin:0 auto; padding:64px 24px 40px;}
+  ::selection { background:var(--rust); color:var(--paper); }
+  a { color:var(--rust); }
+  a:hover { text-decoration:none; }
 
-  header.page-head{margin-bottom:56px;}
-  .kicker{
-    font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:14px;
+  .wrap {
+    max-width:680px;
+    margin:0 auto;
+    padding:64px 24px 40px;
+    animation: arrive .55s ease both;
+  }
+
+  header.page-head { margin-bottom:56px; }
+
+  .kicker {
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:8px;
-  }
-  h1{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:2.6rem;
-    line-height:1.05;
-    margin:0 0 10px;
-  }
-  .tagline{
+    margin-bottom:14px;
     color:var(--ink-soft);
-    font-size:1rem;
+    font-size:.75rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+
+  h1 {
+    margin:0 0 10px;
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-size:2.6rem;
+    font-weight:600;
+    line-height:1.05;
+    animation: title-in .65s ease both;
+  }
+
+  .tagline {
     max-width:52ch;
     margin-bottom:22px;
-  }
-
-  nav.toc{
-    display:flex; flex-wrap:wrap; gap:2px 18px;
-    font-size:.75rem; letter-spacing:.04em;
-    padding:14px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
-    margin-bottom:56px;
-  }
-  nav.toc a{color:var(--ink-soft); text-decoration:none;}
-  nav.toc a:hover{color:var(--rust);}
-
-  section{margin-bottom:56px;}
-  .sec-num{
-    font-size:.75rem; color:var(--rust); letter-spacing:.08em; margin-bottom:6px;
-  }
-  h2{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.5rem;
-    margin:0 0 18px;
-  }
-  p{margin:0 0 14px; max-width:64ch;}
-  
-  ul.plain{margin:0; padding-left:0; list-style:none;}
-  ul.plain li{
-    padding:14px 0; border-bottom:1px solid var(--rule);
-  }
-  ul.plain li:first-child{padding-top:0;}
-  .li-head{display:flex; justify-content:space-between; gap:12px; margin-bottom:4px;}
-  .li-head b{font-weight:600;}
-
-  .bom-note{
-    border-left:2px solid var(--rust);
-    padding-left:16px;
-    font-size:.9rem;
     color:var(--ink-soft);
-    margin-top:18px;
+    font-size:1rem;
+    animation: text-in .55s .14s ease both;
   }
 
-  .cost{
-    font-family:'Fraunces', serif; font-weight:600;
-    font-size:2.2rem; margin-bottom:6px;
-  }
-  .cost sup{font-family:'IBM Plex Mono', monospace; font-size:1rem; color:var(--ink-soft); margin-right:4px;}
-
-  footer{
+  nav.toc {
+    display:flex;
+    flex-wrap:wrap;
+    gap:2px 18px;
+    margin-bottom:56px;
+    padding:14px 0;
     border-top:1px solid var(--rule);
-    padding-top:20px; margin-top:20px;
-    font-size:.78rem; color:var(--ink-soft);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    border-bottom:1px solid var(--rule);
+    font-size:.75rem;
+    letter-spacing:.04em;
   }
-  footer a{color:var(--ink-soft);}
-  footer a:hover{color:var(--rust);}
+
+  nav.toc a { color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover { color:var(--rust); }
+  nav.toc { animation: text-in .55s .22s ease both; }
+
+  section {
+    margin-bottom:56px;
+    animation: section-in .45s ease both;
+  }
+
+  section:nth-of-type(2) { animation-delay:.06s; }
+  section:nth-of-type(3) { animation-delay:.12s; }
+
+  .sec-num {
+    margin-bottom:6px;
+    color:var(--rust);
+    font-size:.75rem;
+    letter-spacing:.08em;
+  }
+
+  h2 {
+    margin:0 0 18px;
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-weight:600;
+  }
+
+  p { max-width:64ch; margin:0 0 14px; }
+
+  ul.plain {
+    margin:0;
+    padding-left:0;
+    list-style:none;
+  }
+
+  ul.plain li {
+    padding:14px 0;
+    border-bottom:1px solid var(--rule);
+    transition:color .2s ease, padding-left .2s ease;
+  }
+
+  ul.plain li:hover {
+    padding-left:6px;
+    color:var(--rust);
+  }
+
+  ul.plain li:first-child { padding-top:0; }
+  .li-head { display:flex; justify-content:space-between; gap:12px; margin-bottom:4px; }
+  .li-head b { font-weight:600; }
+
+  .bom-note {
+    margin-top:18px;
+    padding-left:16px;
+    border-left:2px solid var(--rust);
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+
+  .cost {
+    margin-bottom:6px;
+    font-family:'Fraunces', serif;
+    font-size:2.2rem;
+    font-weight:600;
+  }
+
+  .cost sup {
+    margin-right:4px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1rem;
+  }
+
+  footer {
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+    color:var(--ink-soft);
+    font-size:.78rem;
+  }
+
+  footer a { color:var(--ink-soft); }
+  footer a:hover { color:var(--rust); }
+
+  @keyframes arrive {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  @keyframes section-in {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  @keyframes title-in {
+    from { opacity:0; transform:translateY(6px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  @keyframes text-in {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation:none !important;
+      transition:none !important;
+    }
+  }
+
+  @media (max-width:520px) {
+    .wrap { padding-top:38px; }
+    .kicker { display:block; }
+    .kicker span { display:block; margin-bottom:4px; }
+    footer { display:block; }
+    footer div + div { margin-top:10px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-
   <header class="page-head">
     <div class="kicker">
-      <span> made by Riley Wood & sami </span>
+      <span>made by Riley Wood &amp; sami</span>
     </div>
     <h1>FERROWORKER</h1>
     <p class="tagline">A 1m x 1m x 1m build size 3D printer that can be assembled in 5 days.</p>
   </header>
 
-  <nav class="toc">
+  <nav class="toc" aria-label="Page navigation">
     <a href="#about">About</a>
     <a href="#features">Features</a>
     <a href="#bom">Cost &amp; BOM</a>
@@ -159,26 +258,23 @@
   </main>
 
   <footer>
-    <div>FERROWORKER · GPL-3.0 License · made by Riley Wood & sami </div>
+    <div>FERROWORKER · GPL-3.0 License · made by Riley Wood &amp; sami</div>
     <div>
       <a href="https://github.com/printingstupidity313/FERROWORKER" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </footer>
-
 </div>
 
 <script>
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var id = a.getAttribute('href').slice(1);
-      var target = document.getElementById(id);
-      if(target){
-        e.preventDefault();
-        target.scrollIntoView({behavior:'smooth', block:'start'});
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var target = document.getElementById(link.getAttribute('href').slice(1));
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
       }
     });
   });
 </script>
-
 </body>
 </html>
