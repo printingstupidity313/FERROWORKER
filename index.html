@@ -93,6 +93,111 @@
   nav.toc a:hover { color:var(--rust); }
   nav.toc { animation: text-in .55s .22s ease both; }
 
+  .donate-iframe-wrap {
+    position:relative;
+    width:100%;
+    padding-bottom:120%;
+    height:0;
+    overflow:hidden;
+    border:1px solid var(--rule);
+    margin-top:18px;
+  }
+
+  .donate-iframe-wrap iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+
+  .donate-app-cta {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    padding:12px 18px;
+    border:1px solid var(--rust);
+    background:var(--rust);
+    color:var(--paper);
+    font-family:inherit;
+    font-size:.9rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    cursor:pointer;
+  }
+
+  .donate-app-cta:hover { background:#8c3815; border-color:#8c3815; text-decoration:none; }
+
+  .donate-app-note {
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+
+  .recycle-card {
+    padding:18px 0;
+    border-bottom:1px solid var(--rule);
+  }
+
+  .recycle-card:last-child { border-bottom:none; }
+
+  .recycle-card b { font-weight:600; }
+
+  .recycle-note {
+    margin-top:18px;
+    padding-left:16px;
+    border-left:2px solid var(--rust);
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+
+  .recycle-form {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid var(--rule);
+  }
+
+  .recycle-form input,
+  .recycle-form textarea,
+  .recycle-form select {
+    font-family:inherit;
+    font-size:.95rem;
+    padding:10px 12px;
+    border:1px solid var(--rule);
+    background:transparent;
+    color:var(--ink);
+    outline:none;
+  }
+
+  .recycle-form textarea { resize:vertical; min-height:90px; }
+
+  .recycle-form button {
+    align-self:flex-start;
+    padding:10px 16px;
+    border:1px solid var(--rust);
+    background:var(--rust);
+    color:var(--paper);
+    font-family:inherit;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+
+  .recycle-form button:hover { background:#8c3815; border-color:#8c3815; }
+
+  .recycle-confirm {
+    margin-top:12px;
+    color:var(--ink-soft);
+    font-size:.92rem;
+  }
+
   section {
     margin-bottom:56px;
     animation: section-in .45s ease both;
@@ -100,6 +205,8 @@
 
   section:nth-of-type(2) { animation-delay:.06s; }
   section:nth-of-type(3) { animation-delay:.12s; }
+  section:nth-of-type(4) { animation-delay:.18s; }
+  section:nth-of-type(5) { animation-delay:.24s; }
 
   .sec-num {
     margin-bottom:6px;
@@ -226,6 +333,8 @@
     <a href="#about">About</a>
     <a href="#features">Features</a>
     <a href="#bom">Cost &amp; BOM</a>
+    <a href="#donate">Donate</a>
+    <a href="#recycle">Recycle</a>
   </nav>
 
   <main>
@@ -255,12 +364,66 @@
         <b>BOM Status:</b> I am still adding things to the README, BOM, and the 3D models. This is not even close to finished, this is just the start of this project.
       </div>
     </section>
+
+    <section id="donate">
+      <div class="sec-num">04</div>
+      <h2>Support the Project</h2>
+      <p>If you want to help us build FERROWORKER, you can donate through Hack Club Bank. Every dollar goes toward parts, materials, and making the guide free for everyone.</p>
+      <a class="donate-app-cta" href="https://hcb.hackclub.com/donations/start/ferroworks" target="_blank" rel="noopener">Donate in the HCB app</a>
+      <p class="donate-app-note">This opens the official Hack Club Bank checkout. You will leave this site to complete your donation.</p>
+    </section>
+
+    <section id="recycle">
+      <div class="sec-num">05</div>
+      <h2>Recycle Your 3D Printer</h2>
+      <p>Have an old, broken, or unused 3D printer? We will take it, harvest the good parts, and put them toward future FERROWORKER builds. This keeps e-waste out of landfill and lowers the cost of open-source 3D printing for everyone.</p>
+      <ul class="plain">
+        <li class="recycle-card">
+          <div class="li-head"><b>What we accept</b></div>
+          <span>FDM printers, extruders, hotends, stepper motors, rods, bearings, belts, and electronics. Broken or incomplete is fine.</span>
+        </li>
+        <li class="recycle-card">
+          <div class="li-head"><b>What we cannot accept</b></div>
+          <span>Resin vats, IPA-contaminated parts, or machines soaked in hazardous chemicals.</span>
+        </li>
+        <li class="recycle-card">
+          <div class="li-head"><b>Shipping policy</b></div>
+          <span>Australia: we pay for shipping. International: sender pays for shipping. We will provide a shipping label or drop-off details after confirming the donation.</span>
+        </li>
+        <li class="recycle-card">
+          <div class="li-head"><b>Drop-off / mailing address</b></div>
+          <span>Brisbane, Queensland, Australia. Exact address will be provided by email after your submission is accepted.</span>
+        </li>
+        <li class="recycle-card">
+          <div class="li-head"><b>Contact</b></div>
+          <span>Email <a href="mailto:ferroworks@outlook.com.au">ferroworks@outlook.com.au</a>. Please include photos and a short description of the printer.</span>
+        </li>
+      </ul>
+
+      <form class="recycle-form" id="recycle-form">
+        <input type="text" id="recycle-name" placeholder="Your name" required>
+        <input type="email" id="recycle-email" placeholder="Email address" required>
+        <input type="tel" id="recycle-phone" placeholder="Phone number">
+        <select id="recycle-location" required>
+          <option value="" disabled selected>Location</option>
+          <option value="australia">Australia</option>
+          <option value="international">International</option>
+        </select>
+        <input type="text" id="recycle-printer" placeholder="Printer make/model or short description" required>
+        <textarea id="recycle-details" placeholder="Condition, issues, included parts, and any useful details." required></textarea>
+        <button type="submit">Submit printer donation request</button>
+        <div class="recycle-confirm" id="recycle-confirm" style="display:none;">Request received. We will reply with next steps.</div>
+      </form>
+
+    </section>
   </main>
 
   <footer>
     <div>FERROWORKER · GPL-3.0 License · made by Riley Wood &amp; sami</div>
     <div>
       <a href="https://github.com/printingstupidity313/FERROWORKER" target="_blank" rel="noopener">GitHub ↗</a>
+      <span style="color:var(--rule);margin:0 8px;">|</span>
+      <a href="https://hackclub.slack.com/archives/C0C0V63AW4R" target="_blank" rel="noopener">Slack ↗</a>
     </div>
   </footer>
 </div>
@@ -275,6 +438,38 @@
       }
     });
   });
+
+  (function () {
+    var recycleForm = document.getElementById('recycle-form');
+    var recycleConfirm = document.getElementById('recycle-confirm');
+
+    if (recycleForm) {
+      recycleForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var name = document.getElementById('recycle-name').value.trim();
+        var email = document.getElementById('recycle-email').value.trim();
+        var phone = document.getElementById('recycle-phone').value.trim();
+        var location = document.getElementById('recycle-location').value;
+        var printer = document.getElementById('recycle-printer').value.trim();
+        var details = document.getElementById('recycle-details').value.trim();
+
+        var subject = encodeURIComponent('Printer Donation Request - ' + printer);
+        var body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Email: ' + email + '\n' +
+          'Phone: ' + phone + '\n' +
+          'Location: ' + location + '\n' +
+          'Printer: ' + printer + '\n\n' +
+          'Details:\n' + details
+        );
+
+        window.location.href = 'mailto:ferroworks@outlook.com.au?subject=' + subject + '&body=' + body;
+
+        if (recycleConfirm) recycleConfirm.style.display = 'block';
+        recycleForm.reset();
+      });
+    }
+  })();
 </script>
 </body>
 </html>
